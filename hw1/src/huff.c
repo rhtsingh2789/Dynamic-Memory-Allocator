@@ -59,13 +59,6 @@ unsigned int reverseBits(unsigned int n);
 
 
 void emit_huffman_tree() {
-    while(num_nodes>1){
-        find_smallest_two();
-        num_nodes--;
-    }
-    num_nodes_new();
-    set_parents();
-    put_leaves_in_arr();
     final_compress();
     // To be implemented.
 }
@@ -115,6 +108,13 @@ int compress_block() {
         if(charac == EOF) {
             if(count_blocksize > 0) {
                 make_histogram();
+                while(num_nodes>1){
+                    find_smallest_two();
+                    num_nodes--;
+                }
+                num_nodes_new();
+                set_parents();
+                put_leaves_in_arr();
                 emit_huffman_tree();
             }
             return 1;
@@ -126,6 +126,13 @@ int compress_block() {
 
         if(count_blocksize == b) {
             make_histogram();
+             while(num_nodes>1){
+                find_smallest_two();
+                num_nodes--;
+            }
+            num_nodes_new();
+            set_parents();
+            put_leaves_in_arr();
             emit_huffman_tree();
             return 0;
         }
@@ -377,10 +384,10 @@ int find_smallest_two()
 
     pointer += first_index;
 
-    (*pointer).symbol = 0;
-    (*pointer).weight = 0;
-    (*pointer).left = 0;
-    (*pointer).right = 0;
+    (pointer)->symbol = 0;
+    (pointer)->weight = 0;
+    (pointer)->left = 0;
+    (pointer)->right = 0;
 
     NODE *pointer_two = nodes;
     NODE second_smallest = *pointer_two;
@@ -409,10 +416,10 @@ int find_smallest_two()
 
     pointer_two += second_index;
 
-    (*pointer_two).symbol = 0;
-    (*pointer_two).weight = 0;
-    (*pointer_two).left = 0;
-    (*pointer_two).right = 0;
+    (pointer_two)->symbol = 0;
+    (pointer_two)->weight = 0;
+    (pointer_two)->left = 0;
+    (pointer_two)->right = 0;
 
     int counter_to_end = 0;
     NODE *pointer_to_last_two = nodes;
@@ -430,10 +437,10 @@ int find_smallest_two()
         // debug("%c", (*((*pointer).right)).symbol);
         counter_to_end = second_index;
         while(counter_to_end < num_nodes) {
-            (*pointer_two).symbol = (*(pointer_two+1)).symbol;
-            (*pointer_two).weight = (*(pointer_two+1)).weight;
-            (*pointer_two).left = (*(pointer_two+1)).left;
-            (*pointer_two).right = (*(pointer_two+1)).right;
+            (pointer_two)->symbol = (*(pointer_two+1)).symbol;
+            (pointer_two)->weight = (*(pointer_two+1)).weight;
+            (pointer_two)->left = (*(pointer_two+1)).left;
+            (pointer_two)->right = (*(pointer_two+1)).right;
             pointer_two++;
             counter_to_end++;
         }
@@ -448,10 +455,10 @@ int find_smallest_two()
         // debug("%c", (*((*pointer_two).left)).symbol);
         // debug("%c", (*((*pointer_two).right)).symbol);
         while(counter_to_end < num_nodes) {
-            (*pointer).symbol = (*(pointer+1)).symbol;
-            (*pointer).weight = (*(pointer+1)).weight;
-            (*pointer).left = (*(pointer+1)).left;
-            (*pointer).right = (*(pointer+1)).right;
+            (pointer)->symbol = ((pointer+1))->symbol;
+            (pointer)->weight = ((pointer+1))->weight;
+            (pointer)->left = ((pointer+1))->left;
+            (pointer)->right = ((pointer+1))->right;
             pointer++;
             counter_to_end++;
         }
@@ -460,17 +467,17 @@ int find_smallest_two()
     pointer_to_last_two = nodes;
 
     pointer_to_last_two += 2*(num_nodes)-3;
-    (*pointer_to_last_two).symbol = smallest.symbol;
-    (*pointer_to_last_two).weight = smallest.weight;
-    (*pointer_to_last_two).left = smallest.left;
-    (*pointer_to_last_two).right = smallest.right;
+    (pointer_to_last_two)->symbol = smallest.symbol;
+    (pointer_to_last_two)->weight = smallest.weight;
+    (pointer_to_last_two)->left = smallest.left;
+    (pointer_to_last_two)->right = smallest.right;
 
     pointer_to_last_two++;
 
-    (*pointer_to_last_two).symbol = second_smallest.symbol;
-    (*pointer_to_last_two).weight = second_smallest.weight;
-    (*pointer_to_last_two).left = second_smallest.left;
-    (*pointer_to_last_two).right = second_smallest.right;
+    (pointer_to_last_two)->symbol = second_smallest.symbol;
+    (pointer_to_last_two)->weight = second_smallest.weight;
+    (pointer_to_last_two)->left = second_smallest.left;
+    (pointer_to_last_two)->right = second_smallest.right;
 
     //debug("SMALLEST %d               SECOND SMALLEST %d\n", smallest.weight, second_smallest.weight);
     return 1;
@@ -572,11 +579,11 @@ void prepare_next_block(){
     int numbernodes = (257*2) - 1;
 
     while(numbernodes > 0) {
-        (*pointernd).symbol = 0;
-        (*pointernd).weight = 0;
-        (*pointernd).left = 0;
-        (*pointernd).right = 0;
-        (*pointernd).parent = 0;
+        (pointernd)->symbol = 0;
+        (pointernd)->weight = 0;
+        (pointernd)->left = 0;
+        (pointernd)->right = 0;
+        (pointernd)->parent = 0;
         pointernd++;
         numbernodes--;
     }
