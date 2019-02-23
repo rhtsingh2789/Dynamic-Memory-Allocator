@@ -47,29 +47,25 @@ int char_exists(char c);
 void printString(unsigned const char *ptr);
 
 int find_smallest_two();
-void displayNode();
+
 void set_parents();
 void num_nodes_new();
 void prepare_next_block();
 void put_leaves_in_arr();
-void displayNode_symbols();
+
 void final_compress();
 void make_histogram();
+unsigned int reverseBits(unsigned int n);
 
 
 void emit_huffman_tree() {
-    //debug("%d", num_nodes);
-    //displayNode();
-
     while(num_nodes>1){
         find_smallest_two();
         num_nodes--;
     }
-    //displayNode();
     num_nodes_new();
     set_parents();
     put_leaves_in_arr();
-    //displayNode_symbols();
     final_compress();
     // To be implemented.
 }
@@ -480,17 +476,6 @@ int find_smallest_two()
     return 1;
 }
 
-void displayNode(){
-    NODE *p = nodes;
-    int counterrr = num_nodes;
-    int count =0;
-    while (count < 73){
-        //debug("%c %d\n", (*p).symbol, (*p).weight);
-        counterrr--;
-        p++;
-        count++;
-    }
-}
 
 void num_nodes_new(){
     NODE *pointer = nodes;
@@ -534,27 +519,23 @@ void put_leaves_in_arr() {
     }
 }
 
-void displayNode_symbols() {
-    NODE **k = node_for_symbol;
-    while((*k)!=NULL){
-        //debug("%c   ", (char)(*k)->symbol);
-        //debug("%d\n", (*k)->weight );
-        k+=1;
-    }
-}
+
 
 
 void final_compress() {
+    debug("TWO");
     NODE **pointer_symbol = node_for_symbol;
     NODE *pointer = nodes;
     NODE *pointer_two = nodes;
     unsigned int code_to_be_outputted = 0;
+    int count = 0;
     if((*pointer).parent != 0){
             //debug("YEOOOOO");
         }
     while((*pointer_symbol) != 0) {
         code_to_be_outputted = 0;
         pointer = (*pointer_symbol);
+        count = 0;
         while((*pointer).parent != 0) {
 
             pointer_two = (*pointer).parent;
@@ -571,7 +552,14 @@ void final_compress() {
                 pointer = pointer_two;
                 //debug("Wrong bin");
             }
+            count++;
         }
+        //debug("%d", code_to_be_outputted);
+        // putchar(code_to_be_outputted);
+        code_to_be_outputted = code_to_be_outputted << (32 - count);
+        code_to_be_outputted = reverseBits(code_to_be_outputted);
+        putchar(code_to_be_outputted);
+
         //debug("\n\n\n\n\n\n");
         pointer_symbol++;
         //debug("%x", code_to_be_outputted);
@@ -631,4 +619,20 @@ void make_histogram() {
     (*end_pointer).weight = 0;
     num_nodes++;
     return;
+}
+
+unsigned int reverseBits(unsigned int n)
+{
+    unsigned int reversed = 0;
+    while (n > 0)
+    {
+
+        reversed <<= 1;
+
+        if ((n & 1) == 1)
+            reversed ^= 1;
+        n >>= 1;
+
+    }
+    return reversed;
 }
