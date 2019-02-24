@@ -56,11 +56,13 @@ void put_leaves_in_arr();
 void final_compress();
 void make_histogram();
 unsigned int reverseBits(unsigned int n);
+void codebook();
 
 
 void emit_huffman_tree() {
-    final_compress();
+    //final_compress();
     // To be implemented.
+    codebook();
 }
 
 /**
@@ -535,6 +537,9 @@ void final_compress() {
     NODE *pointer = nodes;
     NODE *pointer_two = nodes;
     unsigned int code_to_be_outputted = 0;
+
+    unsigned char *current_b = current_block;
+
     int count = 0;
     if((*pointer).parent != 0){
             //debug("YEOOOOO");
@@ -543,19 +548,20 @@ void final_compress() {
         code_to_be_outputted = 0;
         pointer = (*pointer_symbol);
         count = 0;
+        debug("%c", ((*pointer_symbol)->symbol));
         while((*pointer).parent != 0) {
 
             pointer_two = (*pointer).parent;
 
             if((*pointer_two).left == pointer) {
                 code_to_be_outputted  = code_to_be_outputted << 1;
-                //debug("0");
+                debug("0");
                 pointer = pointer_two;
             }
             else if((*pointer_two).right == pointer) {
                 code_to_be_outputted = code_to_be_outputted << 1;
                 code_to_be_outputted |= 1;
-                //debug("1");
+                debug("1");
                 pointer = pointer_two;
                 //debug("Wrong bin");
             }
@@ -565,7 +571,7 @@ void final_compress() {
         // putchar(code_to_be_outputted);
         code_to_be_outputted = code_to_be_outputted << (32 - count);
         code_to_be_outputted = reverseBits(code_to_be_outputted);
-        putchar(code_to_be_outputted);
+        //putchar(code_to_be_outputted);
 
         //debug("\n\n\n\n\n\n");
         pointer_symbol++;
@@ -642,4 +648,85 @@ unsigned int reverseBits(unsigned int n)
 
     }
     return reversed;
+}
+
+void codebook(){
+    NODE **pointer_symbol = node_for_symbol;
+    NODE *pointer = nodes;
+    NODE *pointer_two = nodes;
+    unsigned int code_to_be_outputted = 0;
+    int count = 0;
+    unsigned char *current_b = current_block;
+
+    // while((*current_b) != 0) {
+    //     current_b++;
+    // }
+    // (*current_b) = (char) ff;
+
+    //current_b = current_block;
+
+    while(1) {
+        if((*current_b) == '\0') {
+            if(count > 0 && count < 8) {
+                count = 8 - count;
+                code_to_be_outputted <<= count;
+                putchar(code_to_be_outputted);
+            }
+            break;
+        }
+        pointer_symbol = node_for_symbol;
+        pointer = nodes;
+        pointer_two = nodes;
+
+        while((*pointer_symbol) != '\0') {
+            //printf("%x", (unsigned char) 0xFF00);
+            if((*pointer_symbol)->symbol == (*current_b)) {
+                break;
+            }
+            pointer_symbol++;
+        }
+
+
+        // code_to_be_outputted = 0;
+        pointer = (*pointer_symbol);
+        while((*pointer).parent != 0) {
+
+            pointer_two = (*pointer).parent;
+
+            if((*pointer_two).left == pointer) {
+                (*pointer_two).weight = 0;
+                //debug("0");
+                pointer = pointer_two;
+            }
+            else if((*pointer_two).right == pointer) {
+                (pointer_two)->weight = 1;
+                // code_to_be_outputted = code_to_be_outputted << 1;
+                // code_to_be_outputted |= 1;
+                //debug("1");
+                pointer = pointer_two;
+                //debug("Wrong bin");
+            }
+        }
+        while((pointer)->left != '\0' || (pointer)->right != '\0') {
+            if((pointer)->weight == 0) {
+                code_to_be_outputted = code_to_be_outputted << 1;
+                pointer = (pointer)->left;
+                //printf("0");
+            }
+            else if((pointer)->weight == 1) {
+                code_to_be_outputted = code_to_be_outputted << 1;
+                code_to_be_outputted |= 1;
+                pointer = (pointer)->right;
+                //printf("1");
+            }
+            count++;
+            if(count == 8) {
+                putchar(code_to_be_outputted);
+                count = 0;
+                code_to_be_outputted = 0;
+            }
+        }
+        current_b++;
+
+    }
 }
