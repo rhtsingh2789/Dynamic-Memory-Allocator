@@ -80,7 +80,7 @@ read_gedcom(FILE *f, struct node *prev, int level)
     while(*rest >= '0' && *rest <= '9')
       rest++;
     if(*rest != ' ') {
-      fprintf(stderr, "%s: %d: Malformed GEDCOM line ignored\n",
+      fprintf(stderr, "%s: %ld: Malformed GEDCOM line ignored\n",
 	      current_gedcom, current_lineno);
       free(node);
       free(node->line);
@@ -94,7 +94,7 @@ read_gedcom(FILE *f, struct node *prev, int level)
     while(*rest == ' ')
       rest++;
     if(*rest == '\0') {
-      fprintf(stderr, "%s: %d: Malformed GEDCOM line ignored\n",
+      fprintf(stderr, "%s: %ld: Malformed GEDCOM line ignored\n",
 	      current_gedcom, current_lineno);
       free(node->line);
       free(node);
@@ -105,7 +105,7 @@ read_gedcom(FILE *f, struct node *prev, int level)
       while(*rest != '\0' && *rest != '@')
 	rest++;
       if(*rest != '@') {
-	fprintf(stderr, "%s: %d: Non-terminated cross-reference -- line ignored\n",
+	fprintf(stderr, "%s: %ld: Non-terminated cross-reference -- line ignored\n",
 		current_gedcom, current_lineno);
 	free(node->line);
 	free(node);
@@ -122,7 +122,7 @@ read_gedcom(FILE *f, struct node *prev, int level)
     while(*rest == ' ')
       rest++;
     if(*rest == '\0') {
-      fprintf(stderr, "%s: %d: Ignored GEDCOM line with no tag\n",
+      fprintf(stderr, "%s: %ld: Ignored GEDCOM line with no tag\n",
 	      current_gedcom, current_lineno);
       free(node->line);
       free(node);
@@ -133,7 +133,7 @@ read_gedcom(FILE *f, struct node *prev, int level)
       rest++;
     if(*rest)
       *rest++ = '\0';
-    if(tp = findtag(tagp, gedcom_tags, gedcom_tags_size))
+    if((tp = findtag(tagp, gedcom_tags, gedcom_tags_size)))
       node->tag = tp;
     while(*rest == ' ')
       rest++;
@@ -150,12 +150,12 @@ read_gedcom(FILE *f, struct node *prev, int level)
       continue;
     } else {
       if(node->level > level+1)
-	fprintf(stderr, "%s: %d: Level number increased by more than one\n",
+	fprintf(stderr, "%s: %ld: Level number increased by more than one\n",
 		current_gedcom, current_lineno);
       prev->children = node;
       node = read_gedcom(f, node, node->level);
       if(node == NULL) {
-	fprintf(stderr, "%s: %d GEDCOM file does not end at level 0\n",
+	fprintf(stderr, "%s: %ld GEDCOM file does not end at level 0\n",
 		current_gedcom, current_lineno);
 	return(NULL);
       }
@@ -169,7 +169,7 @@ read_gedcom(FILE *f, struct node *prev, int level)
     if(errno == ENOMEM)
       out_of_memory();
     else
-      fprintf(stderr, "%s: %d: Error reading GEDCOM file\n",
+      fprintf(stderr, "%s: %ld: Error reading GEDCOM file\n",
 	      current_gedcom, current_lineno);
   }
   return(NULL);
@@ -180,7 +180,7 @@ void out_of_memory()
   fprintf(stderr, "Insufficient memory available for processing.\n");
   exit(1);
 }
-                   
+
 #if defined(MSDOS) || defined(LINUX)
 char *fgetln(FILE *f, int *size)
 {
@@ -188,8 +188,8 @@ char *fgetln(FILE *f, int *size)
    char *lp, c;
    static int max = 4;
    int s = 0;
-   
-    
+
+
    if(l == NULL) {
      if((l = malloc(max)) == NULL)
    	   out_of_memory();
@@ -204,7 +204,7 @@ char *fgetln(FILE *f, int *size)
         max = 2*max;
         if((l = realloc(l, max)) == NULL)
           out_of_memory();
-        lp = l + s;   
+        lp = l + s;
      }
      *lp++ = c;
      s++;
@@ -219,4 +219,3 @@ char *fgetln(FILE *f, int *size)
 }
 #endif
 
-                   

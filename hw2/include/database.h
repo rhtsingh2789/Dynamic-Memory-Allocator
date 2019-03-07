@@ -13,12 +13,11 @@ extern int total_sources;
 extern int total_notes;
 extern int total_repositories;
 extern int total_submitters;
-
 /*
  * Flag controlling capitalization of surnames
  */
 
-int capitalization = 1;
+int capitalization;
 
 /*
  * Arrays for each access to top-level records

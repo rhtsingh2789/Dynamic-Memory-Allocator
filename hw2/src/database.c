@@ -22,7 +22,7 @@ int total_sources;
 int total_notes;
 int total_repositories;
 int total_submitters;
-
+//int capitalization;
 /*
  * Arrays for each access to top-level records
  */
@@ -84,9 +84,10 @@ process_individual_record(struct node *np)
   struct individual_record *ip;
   struct note_structure *ntp;
   struct xref *xp;
- 
+
   if((ip = malloc(sizeof(*ip))) == NULL)
     out_of_memory();
+  memset(ip, 0, sizeof(*ip));
   np->hook = ip;
   ip->xref = np->xref;
   index_enter(ip->xref, ip);
@@ -339,7 +340,7 @@ process_note(struct node *np)
   struct note_structure *ntp;
   struct continuation *ntpc;
   int cont = 0;
- 
+
   if((ntp = malloc(sizeof(*ntp))) == NULL)
     out_of_memory();
   memset(ntp, 0, sizeof(*ntp));
@@ -490,9 +491,9 @@ link_family_record(struct node *np)
   struct xref *xp;
 
   fp = (struct family_record *)np->hook;
-  if(xp = fp->husband)
+  if((xp = fp->husband))
     xp->pointer.family = index_find(xp->id);
-  if(xp = fp->wife)
+  if((xp = fp->wife))
     xp->pointer.family = index_find(xp->id);
   for(xp = fp->children; xp != NULL; xp = xp->next)
     xp->pointer.individual = index_find(xp->id);

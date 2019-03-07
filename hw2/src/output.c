@@ -370,7 +370,9 @@ void output_individual(struct individual_record *rt)
     mkdir(path, 0777);
     strcat(path, "/");
   } else {
-    sprintf(path, "");
+    memset(path, 0, FILENAME_MAX+1);
+    //path[0] = NULL;
+    //sprintf(path, "%s", "");
   }
   sprintf(url, file_template, rt->xref);
   strcat(path, url);
@@ -442,7 +444,7 @@ void interpret(FILE *ofile)
 	if(current_type == T_STRING) {
 	  fprintf(ofile, "%s", current_value.string);
 	} else if(current_type == T_URL) {
-	  fprintf(ofile, current_value.url);
+	  fprintf(ofile, "%s",current_value.url);
 	} else if(current_type == T_INTEGER) {
 	  /* Integer variables start from 1 */
 	  fprintf(ofile, "%d", current_value.integer + 1);
@@ -461,7 +463,7 @@ void interpret(FILE *ofile)
 }
 
 /*
- * After having seen the initial $, interpret a simple or compound variable. 
+ * After having seen the initial $, interpret a simple or compound variable.
  */
 
 void variable(FILE *ofile)
@@ -492,7 +494,7 @@ void variable(FILE *ofile)
       if(*template == '.') {
 	template++;
 	continue;
-      } else if(*template == '[') 
+      } else if(*template == '[')
 	continue;
       else
 	return;
@@ -537,7 +539,7 @@ void variable(FILE *ofile)
       else {
 	record_type previous_type;
 	union value previous_value;
-	
+
 	previous_type = current_type;
 	previous_value = current_value;
 	variable(ofile);
@@ -590,7 +592,7 @@ void variable(FILE *ofile)
       if(*template == '.') {
 	template++;
 	continue;
-      } else if(*template == '[' || *template == '}') 
+      } else if(*template == '[' || *template == '}')
 	continue;
       else
 	return;
@@ -602,6 +604,7 @@ void variable(FILE *ofile)
       if(!skipping) {
 	if(current_type == T_INDIV) {
 	  current_type = T_URL;
+    memset(current_url, 0, FILENAME_MAX+1);
 	  construct_url(current_url, current_value.indiv);
 	  current_value.url = current_url;
 	} else
@@ -665,7 +668,7 @@ void variable(FILE *ofile)
       if(*template == '.') {
 	template++;
 	continue;
-      } else if(*template == '[' || *template == '}') 
+      } else if(*template == '[' || *template == '}')
 	continue;
       else
 	return;
@@ -899,7 +902,7 @@ void xref_select(char *field)
 void command(FILE *ofile)
 {
   char *buf;
-  char *start = template++; 
+  char *start = template++;
 
   collect_identifier(&buf);
   skip_white_space();
@@ -1079,6 +1082,7 @@ void set_variable(char *name, int value)
   }
   if((b = malloc(sizeof(struct binding))) == NULL)
     out_of_memory();
+  memset(b, '\0', sizeof(*b));
   b->name = strdup(name);
   b->value = value;
   b->next = environment;
@@ -1113,13 +1117,13 @@ void output_error(char *msg)
 void construct_url(char *dest, struct individual_record *indiv)
 {
   char url[FILENAME_MAX+1];
-
   if(max_per_directory) {
     if(!doing_index)
       sprintf(dest, "../");
     sprintf(url, "D%07d/", indiv->serial / max_per_directory);
   } else {
-    sprintf(url, "");
+    memset(url, 0, FILENAME_MAX+1);
+    //sprintf(url, "%s", "");
   }
   strcat(dest, url);
   sprintf(url, url_template, indiv->xref);

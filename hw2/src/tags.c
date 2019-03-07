@@ -72,8 +72,8 @@ struct tag gedcom_tags[] = {
   {"FAMS", FAMS, {"FAMILY SPOUSE"}},
   {"FATH", FATH, {"FATHER"}},
   {"FIDE", FIDE, {"FIDELITY"}},
-  {"FILM", FILM, {"FILM"}},
   {"FILE", FYLE, {"FILE"}},
+  {"FILM", FILM, {"FILM"}},
   {"FORM", FORM, {"FORMAT"}},
   {"GEDC", GEDC, {"GEDCOM"}},
   {"GODP", GODP, {"GODPARENT"}},
@@ -317,17 +317,17 @@ struct tag *validate_tags_table(struct tag *tab, int nmemb)
 void validate_tags_tables()
 {
   struct tag *tab;
-  if(tab = validate_tags_table(gedcom_tags, gedcom_tags_size)) {
+  if((tab = validate_tags_table(gedcom_tags, gedcom_tags_size))) {
     fprintf(stderr, "Internal error: GEDCOM tag table out of order at tag '%s'.\n",
 	    tab->name);
     exit(1);
   }
-  if(tab = validate_tags_table(gedcom_special, gedcom_special_size)) {
+  if((tab = validate_tags_table(gedcom_special, gedcom_special_size))) {
     fprintf(stderr, "Internal error: special tag table out of order at tag '%s'.\n",
 	    tab->name);
     exit(1);
   }
-  if(tab = validate_tags_table(gedcom_other, gedcom_other_size)) {
+  if((tab = validate_tags_table(gedcom_other, gedcom_other_size))) {
     fprintf(stderr, "Internal error: 'other' tag table out of order at tag '%s'.\n",
 	    tab->name);
     exit(1);

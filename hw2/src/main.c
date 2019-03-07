@@ -30,8 +30,9 @@
 int generate_index;
 char **selected_individuals;
 struct node head;
+//int capitalization = 1;
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
   struct node *np;
   int i, optc;
@@ -157,7 +158,7 @@ main(int argc, char *argv[])
   }
   process_records(head.siblings);
   link_records(head.siblings);
-  fprintf(stderr, "Processed %d GEDCOM lines", gedcom_lines);
+  fprintf(stderr, "Processed %ld GEDCOM lines", gedcom_lines);
   if(total_individuals)
     fprintf(stderr, ", %d individuals", total_individuals);
   if(total_families)

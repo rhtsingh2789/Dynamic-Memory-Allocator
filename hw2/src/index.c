@@ -55,6 +55,7 @@ int index_enter(char *id, void *value)
   } else {
     pip->next = new;
   }
+  return 0;
 }
 
 void *index_find(char *id)

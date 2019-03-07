@@ -1,0 +1,39 @@
+==3200== Memcheck, a memory error detector
+==3200== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==3200== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==3200== Command: ../bin/ged2html ../tests/rsrc/testall.ged
+==3200== 
+==3200== Invalid read of size 4
+==3200==    at 0x403BF6: process_individual_record (database.c:95)
+==3200==    by 0x403A96: process_records (database.c:48)
+==3200==    by 0x40555E: main (main.c:159)
+==3200==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==3200== 
+==3200== 
+==3200== Process terminating with default action of signal 11 (SIGSEGV)
+==3200==  Access not within mapped region at address 0x8
+==3200==    at 0x403BF6: process_individual_record (database.c:95)
+==3200==    by 0x403A96: process_records (database.c:48)
+==3200==    by 0x40555E: main (main.c:159)
+==3200==  If you believe this happened as a result of a stack
+==3200==  overflow in your program's main thread (unlikely but
+==3200==  possible), you can try to increase the size of the
+==3200==  main thread stack using the --main-stacksize= flag.
+==3200==  The main thread stack size used in this run was 8388608.
+==3200== 
+==3200== HEAP SUMMARY:
+==3200==     in use at exit: 111,645 bytes in 2,284 blocks
+==3200==   total heap usage: 2,292 allocs, 8 frees, 116,545 bytes allocated
+==3200== 
+==3200== LEAK SUMMARY:
+==3200==    definitely lost: 0 bytes in 0 blocks
+==3200==    indirectly lost: 0 bytes in 0 blocks
+==3200==      possibly lost: 0 bytes in 0 blocks
+==3200==    still reachable: 111,645 bytes in 2,284 blocks
+==3200==         suppressed: 0 bytes in 0 blocks
+==3200== Reachable blocks (those to which a pointer was found) are not shown.
+==3200== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==3200== 
+==3200== For counts of detected and suppressed errors, rerun with: -v
+==3200== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+Segmentation fault (core dumped)
