@@ -396,11 +396,13 @@ process_name(struct node *np)
   struct name_structure *nsp;
 
   for(i = 0, cp = np->rest; *cp != '\0'; cp++, i++);
-  if((p = malloc(i+1)) == NULL)
-    out_of_memory();
+
   if((nsp = malloc(sizeof(*nsp))) == NULL)
     out_of_memory();
   memset(nsp, 0, sizeof(*nsp));
+
+  if((p = malloc(i+1)) == NULL)
+    out_of_memory();
   // free(nsp);
   // free(p);
   nsp->name = p;
