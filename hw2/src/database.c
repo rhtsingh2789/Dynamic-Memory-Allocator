@@ -92,8 +92,11 @@ process_individual_record(struct node *np)
   ip->xref = np->xref;
   index_enter(ip->xref, ip);
   for(np = np->children ; np != NULL; np = np->siblings) {
+    if(np->tag == NULL)
+      continue;
     switch(np->tag->value) {
     case NAME:
+    //if(ip->personal_name == NULL)
       ip->personal_name = process_name(np);
       break;
     case FAMS:
@@ -398,6 +401,8 @@ process_name(struct node *np)
   if((nsp = malloc(sizeof(*nsp))) == NULL)
     out_of_memory();
   memset(nsp, 0, sizeof(*nsp));
+  // free(nsp);
+  // free(p);
   nsp->name = p;
   for(i = 0, cp = np->rest; *cp != '\0'; cp++, i++) {
     if(*cp == '/') {

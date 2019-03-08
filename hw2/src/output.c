@@ -1082,7 +1082,7 @@ void set_variable(char *name, int value)
   }
   if((b = malloc(sizeof(struct binding))) == NULL)
     out_of_memory();
-  memset(b, '\0', sizeof(*b));
+  //memset(b, '\0', sizeof(*b));
   b->name = strdup(name);
   b->value = value;
   b->next = environment;

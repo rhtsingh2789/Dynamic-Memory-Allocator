@@ -32,8 +32,30 @@ char **selected_individuals;
 struct node head;
 //int capitalization = 1;
 
+
+//"Hviscd:u:h:f:t:T:"
+
+static struct option long_options[] =
+        {
+          /* These options set a flag. */
+          {"help", no_argument,       0, 'H'},
+          {"version",   no_argument,       0, 'v'},
+          /* These options don’t set a flag.
+             We distinguish them by their indices. */
+          {"index",     no_argument,       0, 'i'},
+          {"select",  no_argument,       0, 's'},
+          {"no-surname-caps",  no_argument, 0, 'c'},
+          {"individual-template",  required_argument, 0, 't'},
+          {"index-template",    required_argument, 0, 'T'},
+          {"files-per-directory",  required_argument, 0, 'd'},
+          {"url-template",  required_argument, 0, 'u'},
+          {"filename-template",    required_argument, 0, 'f'},
+          {0, 0, 0, 0}
+        };
+
 int main(int argc, char *argv[])
 {
+  capitalization = 1;
   struct node *np;
   int i, optc;
   extern char *optarg;
@@ -58,7 +80,7 @@ int main(int argc, char *argv[])
     exit(1);
   }
 #endif
-  while((optc = getopt(argc, argv, "Hviscd:u:h:f:t:T:")) != -1) {
+  while((optc = getopt_long(argc, argv, "Hviscd:u:h:f:t:T:", long_options, NULL)) != -1) {
     FILE *tempf;
     long size;
     char *temps, *tempe, c;
@@ -206,7 +228,7 @@ int main(int argc, char *argv[])
     } else {
       for(i = 0; i < individual_template_nosubdir_size; i++)
 	size += strlen(individual_template_nosubdir[i]);
-      if((individual_template = malloc(size)) == NULL)
+      if((individual_template = malloc(size+1)) == NULL)
 	out_of_memory();
       *individual_template = '\0';
       for(i = 0; i < individual_template_nosubdir_size; i++)
