@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <getopt.h>
+#include <unistd.h>
 #include "node.h"
 #include "read.h"
 #include "database.h"
@@ -49,6 +50,7 @@ static struct option long_options[] =
           {"index-template",    required_argument, 0, 'T'},
           {"files-per-directory",  required_argument, 0, 'd'},
           {"url-template",  required_argument, 0, 'u'},
+          {"change-directory",  required_argument, 0, 'y'},
           {"filename-template",    required_argument, 0, 'f'},
           {0, 0, 0, 0}
         };
@@ -145,6 +147,12 @@ int main(int argc, char *argv[])
       break;
     case 'f':	/* Template for file names */
       file_template = optarg;
+      break;
+    case 'y':
+      if(chdir(optarg) != 0) {
+        fprintf(stderr, "Error, wrong path");
+        exit(1);
+      }
       break;
     case 'H':
       printf(USAGE);
