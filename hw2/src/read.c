@@ -214,6 +214,7 @@ char *fgetln(FILE *f, int *size)
    *lp++ = '\0';
    *size = s;
    if(s == 0)
+    //free(l);
      return(NULL);
    return(l);
 }

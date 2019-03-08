@@ -96,7 +96,11 @@ process_individual_record(struct node *np)
       continue;
     switch(np->tag->value) {
     case NAME:
-    //if(ip->personal_name == NULL)
+    if(ip->personal_name != NULL){
+      if(ip->personal_name->name != NULL)
+        free(ip->personal_name->name);
+      free(ip->personal_name);
+    }
       ip->personal_name = process_name(np);
       break;
     case FAMS:
@@ -397,12 +401,11 @@ process_name(struct node *np)
 
   for(i = 0, cp = np->rest; *cp != '\0'; cp++, i++);
 
+  if((p = malloc(i+1)) == NULL)
+  out_of_memory();
   if((nsp = malloc(sizeof(*nsp))) == NULL)
     out_of_memory();
   memset(nsp, 0, sizeof(*nsp));
-
-  if((p = malloc(i+1)) == NULL)
-    out_of_memory();
   // free(nsp);
   // free(p);
   nsp->name = p;

@@ -1,36 +1,22 @@
-==3751== Memcheck, a memory error detector
-==3751== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==3751== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==3751== Command: ../bin/ged2html ../tests/rsrc/testall.ged
-==3751== 
+==6329== Memcheck, a memory error detector
+==6329== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==6329== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==6329== Command: ../bin/ged2html ../tests/rsrc/testall.ged
+==6329== 
 Processed 1140 GEDCOM lines, 8 individuals, 4 families, 1 sources, 1 notes
-==3751== 
-==3751== HEAP SUMMARY:
-==3751==     in use at exit: 118,319 bytes in 2,432 blocks
-==3751==   total heap usage: 2,472 allocs, 40 frees, 169,235 bytes allocated
-==3751== 
-==3751== 24 bytes in 1 blocks are indirectly lost in loss record 11 of 50
-==3751==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==3751==    by 0x404696: process_name (database.c:404)
-==3751==    by 0x403C18: process_individual_record (database.c:100)
-==3751==    by 0x403A7D: process_records (database.c:48)
-==3751==    by 0x40556B: main (main.c:181)
-==3751== 
-==3751== 40 (16 direct, 24 indirect) bytes in 1 blocks are definitely lost in loss record 16 of 50
-==3751==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==3751==    by 0x40465B: process_name (database.c:400)
-==3751==    by 0x403C18: process_individual_record (database.c:100)
-==3751==    by 0x403A7D: process_records (database.c:48)
-==3751==    by 0x40556B: main (main.c:181)
-==3751== 
-==3751== LEAK SUMMARY:
-==3751==    definitely lost: 16 bytes in 1 blocks
-==3751==    indirectly lost: 24 bytes in 1 blocks
-==3751==      possibly lost: 0 bytes in 0 blocks
-==3751==    still reachable: 118,279 bytes in 2,430 blocks
-==3751==         suppressed: 0 bytes in 0 blocks
-==3751== Reachable blocks (those to which a pointer was found) are not shown.
-==3751== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==3751== 
-==3751== For counts of detected and suppressed errors, rerun with: -v
-==3751== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==6329== 
+==6329== HEAP SUMMARY:
+==6329==     in use at exit: 118,279 bytes in 2,430 blocks
+==6329==   total heap usage: 2,472 allocs, 42 frees, 169,235 bytes allocated
+==6329== 
+==6329== LEAK SUMMARY:
+==6329==    definitely lost: 0 bytes in 0 blocks
+==6329==    indirectly lost: 0 bytes in 0 blocks
+==6329==      possibly lost: 0 bytes in 0 blocks
+==6329==    still reachable: 118,279 bytes in 2,430 blocks
+==6329==         suppressed: 0 bytes in 0 blocks
+==6329== Reachable blocks (those to which a pointer was found) are not shown.
+==6329== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==6329== 
+==6329== For counts of detected and suppressed errors, rerun with: -v
+==6329== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
