@@ -143,6 +143,7 @@ void *sf_malloc(size_t size) {
                             *curr_block = block_to_return;
                             //sf_show_heap();
                             //debug("%p/n", curr_block);
+                            curr_block = (void *) curr_block + sizeof(sf_header);
                             return curr_block;
                         }
                         else{
@@ -161,6 +162,7 @@ void *sf_malloc(size_t size) {
                             curr_block = (void*) curr_block - blocky_sizee;
                             *curr_block = block_to_return;
                             //sf_show_heap();
+                            curr_block = (void *) curr_block + sizeof(sf_header);
                             return curr_block;
                         }
                     }
@@ -218,6 +220,7 @@ void *sf_malloc(size_t size) {
 
 
 void sf_free(void *pp) {
+    pp -= sizeof(sf_header);
     sf_block *block_free = (sf_block *) pp;
     int size_of_block = (*block_free).header.block_size;
     size_of_block = size_of_block >> 2;
