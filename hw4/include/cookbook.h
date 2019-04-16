@@ -35,6 +35,7 @@ typedef struct recipe_link {
     struct recipe_link *next;         // Next link in the dependency list.
 } RECIPE_LINK;
 
+
 typedef struct recipe {
     char *name;                       // Name of the recipe.
     RECIPE_LINK *this_depends_on;     // List of recipes on which this recipe depends.

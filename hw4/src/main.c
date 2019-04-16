@@ -4,6 +4,8 @@
 #include "cookbook.h"
 #include "debug.h"
 
+int cook(int argc, char *argv[]);
+
 int main(int argc, char *argv[]) {
     COOKBOOK *cbp;
     int err = 0;
@@ -13,6 +15,7 @@ int main(int argc, char *argv[]) {
 	fprintf(stderr, "Error parsing cookbook\n");
 	exit(1);
     } else {
+    cook(argc, argv);
 	unparse_cookbook(cbp, stdout);
     }
     exit(1);
