@@ -64,6 +64,18 @@ int cook(int argc, char *argv[]) {
     }
 
     cooking_here(work_queue_new);
+
+    RECIPE_LINK *clean_proc = work_queue_new;
+    while(clean_proc != NULL) {
+        free(clean_proc);
+        clean_proc = (*clean_proc).next;
+    }
+
+    clean_proc = work_queue;
+    while(clean_proc != NULL) {
+        free(clean_proc);
+        clean_proc = (*clean_proc).next;
+    }
     // cooking_here(work_queue_new);
     // rl = work_queue_new;
     // while(rl != NULL) {
