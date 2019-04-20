@@ -1,0 +1,9 @@
+canadian_bacon: tatti muut
+  buy bacon from store
+  buy pepper from store
+
+tatti:
+  buy tatti also
+
+muut:
+  buy muut bhi kar hi lo

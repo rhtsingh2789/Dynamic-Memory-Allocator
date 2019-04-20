@@ -43,5 +43,4 @@ pepper:
 get_gas:
 
 cow:
-  echo Cowabunga, dude! > cow
-
+ echo Cowabunga, dude! > cow

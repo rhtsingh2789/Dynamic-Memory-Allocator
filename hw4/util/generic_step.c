@@ -19,7 +19,6 @@ int main(int argc, char *argv[]) {
     clock_gettime(CLOCK_REALTIME, &ts);
     srandom((unsigned int)ts.tv_nsec);
     int delay = random() % 10;
-
     fprintf(stderr, "START\t[%ld.%03ld,%6d,%2d] %s",
 	    ts.tv_sec-1553700000, ts.tv_nsec % 1000,
 	    getpid(), delay, argv[0]);
