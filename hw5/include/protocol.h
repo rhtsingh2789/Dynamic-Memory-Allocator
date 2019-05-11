@@ -1,3 +1,4 @@
+
 /**
  * === DO NOT MODIFY THIS FILE ===
  * If you need some other prototypes or constants in a header, please put them
@@ -36,7 +37,7 @@
  *   REFRESH: Ask for the view to be refreshed
  *   SEND:    Send a chat message
  *
- * 
+ *
  * Server-to-client responses:
  *   READY:   Sent in response to a successful login
  *   INUSE:   Avatar/UID is in use -- login unsuccessful
