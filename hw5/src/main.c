@@ -126,7 +126,10 @@ int main(int argc, char* argv[]){
       connfdp = Malloc(sizeof(int));
       *connfdp = accept(listenfd, (struct sockaddr*) &clientaddr, &clientlen);
       pthread_t tid;
+      int jeff = 0;
+      if(jeff == 0) {
       pthread_create(&tid, NULL, mzw_client_service, connfdp);
+    }
     }
 
     fprintf(stderr, "You have to finish implementing main() "
