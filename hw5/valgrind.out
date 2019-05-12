@@ -1,0 +1,330 @@
+==13888== Memcheck, a memory error detector
+==13888== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==13888== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==13888== Command: bin/mazewar -p 9999
+==13888== Parent PID: 13876
+==13888== 
+==13888== Thread 2:
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E43D44: pthread_mutex_lock (pthread_mutex_lock.c:67)
+==13888==    by 0x40601E: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E43DA7: pthread_mutex_lock (pthread_mutex_lock.c:80)
+==13888==    by 0x40601E: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E43DC4: pthread_mutex_lock (pthread_mutex_lock.c:81)
+==13888==    by 0x40601E: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E43DD8: pthread_mutex_lock (pthread_mutex_lock.c:159)
+==13888==    by 0x40601E: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x406026: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x406038: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x406043: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Conditional jump or move depends on uninitialised value(s)
+==13888==    at 0x50A590E: vfprintf (vfprintf.c:1631)
+==13888==    by 0x50A6EF0: buffered_vfprintf (vfprintf.c:2320)
+==13888==    by 0x50A432C: vfprintf (vfprintf.c:1293)
+==13888==    by 0x50AC7F6: fprintf (fprintf.c:32)
+==13888==    by 0x40608A: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x50A1711: _itoa_word (_itoa.c:180)
+==13888==    by 0x50A512C: vfprintf (vfprintf.c:1631)
+==13888==    by 0x50A6EF0: buffered_vfprintf (vfprintf.c:2320)
+==13888==    by 0x50A432C: vfprintf (vfprintf.c:1293)
+==13888==    by 0x50AC7F6: fprintf (fprintf.c:32)
+==13888==    by 0x40608A: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Conditional jump or move depends on uninitialised value(s)
+==13888==    at 0x50A1718: _itoa_word (_itoa.c:180)
+==13888==    by 0x50A512C: vfprintf (vfprintf.c:1631)
+==13888==    by 0x50A6EF0: buffered_vfprintf (vfprintf.c:2320)
+==13888==    by 0x50A432C: vfprintf (vfprintf.c:1293)
+==13888==    by 0x50AC7F6: fprintf (fprintf.c:32)
+==13888==    by 0x40608A: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Conditional jump or move depends on uninitialised value(s)
+==13888==    at 0x50A51AF: vfprintf (vfprintf.c:1631)
+==13888==    by 0x50A6EF0: buffered_vfprintf (vfprintf.c:2320)
+==13888==    by 0x50A432C: vfprintf (vfprintf.c:1293)
+==13888==    by 0x50AC7F6: fprintf (fprintf.c:32)
+==13888==    by 0x40608A: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Conditional jump or move depends on uninitialised value(s)
+==13888==    at 0x50A4C59: vfprintf (vfprintf.c:1631)
+==13888==    by 0x50A6EF0: buffered_vfprintf (vfprintf.c:2320)
+==13888==    by 0x50A432C: vfprintf (vfprintf.c:1293)
+==13888==    by 0x50AC7F6: fprintf (fprintf.c:32)
+==13888==    by 0x40608A: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Conditional jump or move depends on uninitialised value(s)
+==13888==    at 0x50A4CE2: vfprintf (vfprintf.c:1631)
+==13888==    by 0x50A6EF0: buffered_vfprintf (vfprintf.c:2320)
+==13888==    by 0x50A432C: vfprintf (vfprintf.c:1293)
+==13888==    by 0x50AC7F6: fprintf (fprintf.c:32)
+==13888==    by 0x40608A: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x406096: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4060A0: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4060AA: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4060C1: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4060CF: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E454C0: __pthread_mutex_unlock_usercnt (pthread_mutex_unlock.c:39)
+==13888==    by 0x4E454C0: pthread_mutex_unlock (pthread_mutex_unlock.c:314)
+==13888==    by 0x4060E8: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E454DA: __pthread_mutex_unlock_usercnt (pthread_mutex_unlock.c:49)
+==13888==    by 0x4E454DA: pthread_mutex_unlock (pthread_mutex_unlock.c:314)
+==13888==    by 0x4060E8: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E43D44: pthread_mutex_lock (pthread_mutex_lock.c:67)
+==13888==    by 0x4059D9: player_send_packet (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x406124: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E43DA7: pthread_mutex_lock (pthread_mutex_lock.c:80)
+==13888==    by 0x4059D9: player_send_packet (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x406124: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E43DC4: pthread_mutex_lock (pthread_mutex_lock.c:81)
+==13888==    by 0x4059D9: player_send_packet (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x406124: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E43DD8: pthread_mutex_lock (pthread_mutex_lock.c:159)
+==13888==    by 0x4059D9: player_send_packet (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x406124: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4059DE: player_send_packet (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x406124: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4059FE: player_send_packet (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x406124: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x405A44: player_send_packet (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x406124: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Warning: invalid file descriptor 100800256 in syscall write()
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E454C0: __pthread_mutex_unlock_usercnt (pthread_mutex_unlock.c:39)
+==13888==    by 0x4E454C0: pthread_mutex_unlock (pthread_mutex_unlock.c:314)
+==13888==    by 0x405A6A: player_send_packet (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x406124: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E454DA: __pthread_mutex_unlock_usercnt (pthread_mutex_unlock.c:49)
+==13888==    by 0x4E454DA: pthread_mutex_unlock (pthread_mutex_unlock.c:314)
+==13888==    by 0x405A6A: player_send_packet (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x406124: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E43D44: pthread_mutex_lock (pthread_mutex_lock.c:67)
+==13888==    by 0x405479: player_reset (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x40613D: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E43DA7: pthread_mutex_lock (pthread_mutex_lock.c:80)
+==13888==    by 0x405479: player_reset (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x40613D: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E43DC4: pthread_mutex_lock (pthread_mutex_lock.c:81)
+==13888==    by 0x405479: player_reset (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x40613D: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4E43DD8: pthread_mutex_lock (pthread_mutex_lock.c:159)
+==13888==    by 0x405479: player_reset (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x40613D: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x40547E: player_reset (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x40613D: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4054B6: player_reset (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x40613D: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4054C1: player_reset (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x40613D: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== Use of uninitialised value of size 8
+==13888==    at 0x4054DC: player_reset (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x40613D: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== 
+==13888== Process terminating with default action of signal 11 (SIGSEGV)
+==13888==  Bad permissions for mapped region at address 0x406BF8
+==13888==    at 0x402C86: maze_set_player_random (maze.c:93)
+==13888==    by 0x4054EC: player_reset (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x40613D: player_check_for_laser_hit (in /home/student/rossingh/hw5/bin/mazewar)
+==13888==    by 0x4048FF: mzw_client_service (server.c:54)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== FILE DESCRIPTORS: 9 open at exit.
+==13888== Open AF_INET socket 6: 127.0.0.1:9999 <-> 127.0.0.1:60376
+==13888==    at 0x4E4A750: __accept_nocancel (syscall-template.S:84)
+==13888==    by 0x402671: main (main.c:127)
+==13888== 
+==13888== Open AF_INET socket 5: 0.0.0.0:9999 <-> unbound
+==13888==    at 0x515F5A7: socket (syscall-template.S:84)
+==13888==    by 0x40445D: open_listenfd (csapp.c:767)
+==13888==    by 0x404584: Open_listenfd (csapp.c:811)
+==13888==    by 0x402632: main (main.c:121)
+==13888== 
+==13888== Open file descriptor 13: /dev/shm/bxf_arena_13874 (deleted)
+==13888==    <inherited from parent>
+==13888== 
+==13888== Open file descriptor 12: /dev/shm/bxf_arena_13874 (deleted)
+==13888==    <inherited from parent>
+==13888== 
+==13888== Open file descriptor 4:
+==13888==    <inherited from parent>
+==13888== 
+==13888== Open file descriptor 3: /home/student/rossingh/hw5/valgrind.out
+==13888==    <inherited from parent>
+==13888== 
+==13888== Open file descriptor 2: /dev/pts/1
+==13888==    <inherited from parent>
+==13888== 
+==13888== Open file descriptor 1: /dev/pts/1
+==13888==    <inherited from parent>
+==13888== 
+==13888== Open file descriptor 0:
+==13888==    <inherited from parent>
+==13888== 
+==13888== 
+==13888== HEAP SUMMARY:
+==13888==     in use at exit: 564 bytes in 7 blocks
+==13888==   total heap usage: 8 allocs, 1 frees, 568 bytes allocated
+==13888== 
+==13888== Thread 1:
+==13888== 88 bytes in 1 blocks are definitely lost in loss record 6 of 7
+==13888==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==13888==    by 0x403869: Malloc (csapp.c:289)
+==13888==    by 0x404E62: creg_register (client_registry.c:45)
+==13888==    by 0x4048B1: mzw_client_service (server.c:46)
+==13888==    by 0x4E416B9: start_thread (pthread_create.c:333)
+==13888== 
+==13888== 272 bytes in 1 blocks are possibly lost in loss record 7 of 7
+==13888==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==13888==    by 0x40138A4: allocate_dtv (dl-tls.c:322)
+==13888==    by 0x40138A4: _dl_allocate_tls (dl-tls.c:539)
+==13888==    by 0x4E4226E: allocate_stack (allocatestack.c:588)
+==13888==    by 0x4E4226E: pthread_create@@GLIBC_2.2.5 (pthread_create.c:539)
+==13888==    by 0x40269F: main (main.c:129)
+==13888== 
+==13888== LEAK SUMMARY:
+==13888==    definitely lost: 88 bytes in 1 blocks
+==13888==    indirectly lost: 0 bytes in 0 blocks
+==13888==      possibly lost: 272 bytes in 1 blocks
+==13888==    still reachable: 204 bytes in 5 blocks
+==13888==         suppressed: 0 bytes in 0 blocks
+==13888== Reachable blocks (those to which a pointer was found) are not shown.
+==13888== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==13888== 
+==13888== For counts of detected and suppressed errors, rerun with: -v
+==13888== Use --track-origins=yes to see where uninitialised values come from
+==13888== ERROR SUMMARY: 69 errors from 39 contexts (suppressed: 0 from 0)

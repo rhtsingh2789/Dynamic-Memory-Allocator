@@ -22,7 +22,7 @@ int initi_mazingly(FILE *file);
 static char *default_maze[] = {
   "******************************",
   "***** %%%%%%%%% &&&&&&&&&&& **",
-  "***** %%%%%%%%%        $$$$  *",
+  "***** %%%%%%%%%    *   $$$$  *",
   "*           $$$$$$ $$$$$$$$$ *",
   "*##########                  *",
   "*########## @@@@@@@@@@@@@@@@@*",
@@ -35,18 +35,13 @@ CLIENT_REGISTRY *client_registry;
 
 int main(int argc, char* argv[]){
       signal(SIGHUP, sig_handler);
-    // Option processing should be performed here.
-    // Option '-p <port>' is required in order to specify the port number
-    // on which the server should listen.
 
-    // Perform required initializations of the client_registry,
-    // maze, and player modules.
     char **maze = NULL;
     int i = 1;
     unsigned int port;
     int fileGiven = 0;
     int pGiven = 0;
-    char **mazingly = NULL;
+    //char **mazingly = NULL;
     int count = 0;
     debug("IDHAR");
     while(i < argc) {
@@ -64,39 +59,37 @@ int main(int argc, char* argv[]){
           int count = 0;
           int max_size=0;
           int size=0;
-          char line[1000];
+          char each_line[1000];
           debug("Hello");
-          while(fgets(line, 1000, file)!=NULL) {
-            size = strlen(line);
-            if (size > max_size) max_size = size;
+          while(NULL != fgets(each_line, 1000, file)) {
+            size = strlen(each_line);
+            if (max_size < size) {
+              max_size = size;
+            }
             count++;
           }
           fclose(file);
           FILE *file1 = fopen(argv[i+1], "r");
-          maze = Malloc(count*sizeof(char*));
+          maze = Malloc(count*sizeof(char *));
           count = 0;
-          while(fgets(line, max_size+1, file1)!=NULL){
-              if(line[strlen(line)-1] == '\n'){
-                size = strlen(line)-1;
+          while(NULL != fgets(each_line, max_size+1, file1)){
+              if('\n' == each_line[strlen(each_line)-1]){
+                size = strlen(each_line)-1;
               }
               else{
-                size = strlen(line);
+                size = strlen(each_line);
               }
               debug("%d", size);
-              maze[count] = Malloc(size*sizeof(char));
-              strncpy(maze[count], line, size);
+              maze[count] = Malloc(sizeof(char)*size);
+              strncpy(maze[count], each_line, size);
              // debug("%s", maze[count]);
               count++;
           }
 
           maze[count] = Malloc(sizeof(char));
           maze[count] = '\0';
-          int f =0 ;
-          while(f<=count){
-           // debug("Hello");
-            debug("%s", maze[f]);
-            f++;
-          }
+
+
           fclose(file1);
           i+=2;
         }
@@ -110,7 +103,7 @@ int main(int argc, char* argv[]){
     }
     client_registry = creg_init();
     if(fileGiven == 1) {
-      maze_init(mazingly);
+      maze_init(maze);
     }
     else{
       maze_init(default_maze);
