@@ -56,7 +56,7 @@ int main(int argc, char* argv[]){
           if(file == NULL){
             exit(1);
           }
-          int count = 0;
+          count = 0;
           int max_size=0;
           int size=0;
           char each_line[1000];
